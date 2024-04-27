@@ -1,7 +1,7 @@
 import { createBrowserRouter, useLocation } from 'react-router-dom';
 import React, { ReactNode, useEffect } from 'react';
 import { AppLayout } from '../layouts';
-import { CheckoutPage, ErrorPage, HomePage, SnippetTypePage } from '../pages';
+import { ErrorPage, HomePage } from '../pages';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -43,30 +43,6 @@ const router = createBrowserRouter([
                 index: true,
                 path: '',
                 element: <HomePage />,
-            },
-        ],
-    },
-    {
-        path: 'type',
-        element: <PageWrapper children={<AppLayout />} />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                index: true,
-                path: ':categoryTitle',
-                element: <SnippetTypePage />,
-            },
-        ],
-    },
-    {
-        path: 'checkout',
-        element: <PageWrapper children={<AppLayout />} />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                index: true,
-                path: ':priceId',
-                element: <CheckoutPage />,
             },
         ],
     },

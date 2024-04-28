@@ -1,5 +1,5 @@
 import { requests } from '../lib';
 
 export const ForecastApi = {
-    forecastByCity: () => requests.get(`forecast?q=Nairobi,KE`),
+    forecastByCity: () => requests.get(`forecast?q=Nairobi,KE&units=metric`),
 };

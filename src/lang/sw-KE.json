@@ -1,4 +1,21 @@
 {
-    "app.title": "Internationalisation React",
-    "app.description": "Ceci est un exemple simple d'internationalisation dans React en utilisant react-intl."
+    "app.title": "Dashibodi ya hali ya hewa",
+    "app.description": "Dashibodi ya hali ya hewa ya lugha nyingi iliyojengwa kwa kutumia React(Vite), Mantine, OpenWeatherApi na Axios",
+    "location.city_label": "Jiji",
+    "location.country_label": "Nchi",
+    "weather.title_label": "Hali ya hewa ya sasa",
+    "weather.temp_label": "Halijoto",
+    "weather.feels_like_label": "Kunahisi kama",
+    "weather.sunrise_label": "Kuchomoza kwa jua",
+    "weather.sunset_label": "Machweo",
+    "weather.max_label": "Upeo",
+    "weather.min_label": "Kiwango cha chini",
+    "weather.pressure_label": "Shinikizo",
+    "weather.humidity_label": "Unyevu",
+    "weather.visibility_label": "Mwonekano",
+    "weather.wind_label": "Upepo",
+    "weather.speed_label": "Kasi",
+    "weather.degree_label": "Digrii",
+    "weather.cloudiness_label": "Uwepo wa mawingu",
+    "weather.rain_label": "Mvua"
 }

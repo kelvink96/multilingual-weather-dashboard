@@ -1,4 +1,21 @@
 {
-    "app.title": "React Internationalization",
-    "app.description": "This is a simple example of internationalization in React using react-intl."
+    "app.title": "Weather dashboard",
+    "app.description": "A multi-lingual weather dashboard built using React(Vite), Mantine, OpenWeatherApi and Axios",
+    "location.city_label": "City",
+    "location.country_label": "Country",
+    "weather.title_label": "Current weather",
+    "weather.temp_label": "Temperature",
+    "weather.feels_like_label": "It feels like",
+    "weather.sunrise_label": "Sunrise",
+    "weather.sunset_label": "Sunset",
+    "weather.max_label": "Max",
+    "weather.min_label": "Min",
+    "weather.pressure_label": "Pressure",
+    "weather.humidity_label": "Humidity",
+    "weather.visibility_label": "Visibility",
+    "weather.wind_label": "Wind",
+    "weather.speed_label": "Speed",
+    "weather.degree_label": "Degrees",
+    "weather.cloudiness_label": "Cloudiness",
+    "weather.rain_label": "Rain"
 }

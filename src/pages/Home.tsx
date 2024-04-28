@@ -1,8 +1,22 @@
-import { Box, Flex, Grid, Group, Image, Paper, PaperProps, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import { Box, Grid, Paper, PaperProps, SimpleGrid, Stack, Title } from '@mantine/core';
 import { useCallback, useEffect, useState } from 'react';
 import { ForecastApi, WeatherApi } from '../api';
 import { Forecast, Weather } from '../models';
-import { format, fromUnixTime } from 'date-fns';
+import { ForecastCard, HeroWeatherCard, WeatherCard } from '../components';
+import {
+    IconCloud,
+    IconDashboard,
+    IconDropletHalf2,
+    IconDroplets,
+    IconMist,
+    IconSunrise,
+    IconSunset,
+    IconTemperature,
+    IconTemperatureCelsius,
+    IconWind,
+} from '@tabler/icons-react';
+import { timeFormatter } from '../utils';
+import { useIntl } from 'react-intl';
 
 const PAPER_PROPS: PaperProps = {
     p: 'md',
@@ -12,6 +26,8 @@ const PAPER_PROPS: PaperProps = {
 export const HomePage = () => {
     const [currentWeather, setCurrentWeather] = useState<Weather>();
     const [forecast, setForecast] = useState<Forecast>();
+    const intl = useIntl();
+
     const fetchCurrentWeather = useCallback(async () => {
         try {
             const response: Weather = await WeatherApi.currentByCity();
@@ -43,73 +59,80 @@ export const HomePage = () => {
                 <Grid.Col span={{ base: 12, md: 6, lg: 8 }}>
                     {currentWeather && (
                         <Stack>
-                            <Paper {...PAPER_PROPS}>
-                                <Title order={6}>
-                                    Current weather: {format(fromUnixTime(currentWeather?.dt), 'hh:mm bb')}
-                                </Title>
-                                <Flex>
-                                    <Text>City: {currentWeather?.name}</Text>
-                                    <Text>Country: {currentWeather?.sys.country}</Text>
-                                </Flex>
-                                {currentWeather?.weather?.map((w) => (
-                                    <Paper component={Group} key={w.id}>
-                                        <Image
-                                            src={`https://openweathermap.org/img/wn/${w.icon}@2x.png`}
-                                            h={60}
-                                            w={60}
-                                            fit="contain"
-                                        />
-                                        <Stack>
-                                            <Text>{w.main}</Text>
-                                            <Text>{w.description}</Text>
-                                        </Stack>
-                                    </Paper>
-                                ))}
-                                <Flex>
-                                    <Text>Temp feels like: {currentWeather?.main.feels_like}</Text>
-                                    <Text>Max {currentWeather?.main.temp_max}</Text>
-                                    <Text>Min {currentWeather?.main.temp_min}</Text>
-                                </Flex>
-                            </Paper>
-                            <Paper {...PAPER_PROPS}>
-                                <Text>Sunrise: {currentWeather?.sys.sunrise}</Text>
-                                <Text>Sunset: {currentWeather?.sys.sunset}</Text>
-                            </Paper>
+                            {currentWeather && currentWeather.weather && currentWeather.weather.length && (
+                                <HeroWeatherCard
+                                    city={currentWeather.name}
+                                    country={currentWeather.sys.country}
+                                    description={currentWeather.weather[0].main}
+                                    title={currentWeather.weather[0].description}
+                                    icon={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+                                    time={currentWeather.dt}
+                                    tempFeelsLike={currentWeather?.main.feels_like}
+                                    maxTemp={currentWeather?.main.temp_max}
+                                    minTemp={currentWeather?.main.temp_min}
+                                    {...PAPER_PROPS}
+                                />
+                            )}
+                            <WeatherCard
+                                title={intl.formatMessage({ id: 'weather.sunrise_label' })}
+                                icon={IconSunrise}
+                                unit={timeFormatter(currentWeather?.sys.sunrise)}
+                                {...PAPER_PROPS}
+                            />
+                            <WeatherCard
+                                title={intl.formatMessage({ id: 'weather.sunset_label' })}
+                                icon={IconSunset}
+                                unit={timeFormatter(currentWeather?.sys.sunset)}
+                                {...PAPER_PROPS}
+                            />
                             <SimpleGrid
                                 cols={{ base: 1, sm: 2, lg: 5 }}
                                 spacing={{ base: 10, sm: 'xl' }}
                                 verticalSpacing={{ base: 'md', sm: 'xl' }}
                             >
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Temperature</Text>
-                                    <Text>{currentWeather?.main.temp}</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Pressure</Text>
-                                    <Text>{currentWeather?.main.pressure}</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Humidity</Text>
-                                    <Text>{currentWeather?.main.humidity}</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Visibility</Text>
-                                    <Text>{currentWeather?.visibility}km</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Wind</Text>
-                                    <Text>Speed: {currentWeather?.wind.speed}</Text>
-                                    <Text>Degrees: {currentWeather?.wind.deg}</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Cloudiness</Text>
-                                    <Text>{currentWeather?.clouds.all}%</Text>
-                                </Paper>
-                                <Paper {...PAPER_PROPS}>
-                                    <Text>Rain</Text>
-                                    <Text>1 hour: {currentWeather?.rain['1h']}mm</Text>
-                                    <Text>3 hour: {currentWeather?.rain['3h']}mm</Text>
-                                </Paper>
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.temp_label' })}
+                                    icon={IconTemperature}
+                                    unit={currentWeather?.main.temp}
+                                    extraIcon={IconTemperatureCelsius}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.pressure_label' })}
+                                    icon={IconDashboard}
+                                    unit={`${currentWeather?.main.temp}hPa`}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.humidity_label' })}
+                                    icon={IconDropletHalf2}
+                                    unit={`${currentWeather?.main.humidity}%`}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.visibility_label' })}
+                                    icon={IconMist}
+                                    unit={`${currentWeather?.visibility}km`}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.wind_label' })}
+                                    icon={IconWind}
+                                    unit={`${currentWeather?.wind.speed} m/s`}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.cloudiness_label' })}
+                                    icon={IconCloud}
+                                    unit={`${currentWeather?.clouds.all}%`}
+                                    {...PAPER_PROPS}
+                                />
+                                <WeatherCard
+                                    title={intl.formatMessage({ id: 'weather.rain_label' })}
+                                    icon={IconDroplets}
+                                    unit={`${currentWeather.rain['1h']}mm`}
+                                    {...PAPER_PROPS}
+                                />
                             </SimpleGrid>
                         </Stack>
                     )}
@@ -117,25 +140,20 @@ export const HomePage = () => {
                 <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
                     <Paper {...PAPER_PROPS}>
                         <Title order={5}>5-day forecast</Title>
-                        {forecast?.list?.map((f) => (
-                            <Paper key={f.dt} withBorder>
-                                <Text>{format(fromUnixTime(f?.dt), 'MM/dd/yyyy hh:mm bb')}</Text>
-                                <Text>Temp: {f.main.temp}</Text>
-                                <Text>Pressure: {f.main.pressure}</Text>
-                                <Text>Humidity: {f.main.humidity}</Text>
-                                {f.weather && (
-                                    <>
-                                        <Image
-                                            src={`https://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
-                                            h={60}
-                                            w={60}
-                                            fit="contain"
-                                        />
-                                        <Text>{f.weather[0].main}</Text>
-                                    </>
-                                )}
-                            </Paper>
-                        ))}
+                        {forecast?.list?.map(
+                            (f) =>
+                                f.weather && (
+                                    <ForecastCard
+                                        key={f.dt}
+                                        date={f.dt}
+                                        temp={f.main.temp}
+                                        pressure={f.main.pressure}
+                                        humidity={f.main.humidity}
+                                        icon={`https://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
+                                        mainWeather={f.weather[0].main}
+                                    />
+                                )
+                        )}
                     </Paper>
                 </Grid.Col>
             </Grid>

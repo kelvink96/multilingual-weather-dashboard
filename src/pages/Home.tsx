@@ -2,7 +2,7 @@ import { Box, Flex, Grid, Group, Image, Paper, PaperProps, SimpleGrid, Stack, Te
 import { useCallback, useEffect, useState } from 'react';
 import { ForecastApi, WeatherApi } from '../api';
 import { Forecast, Weather } from '../models';
-import { fromUnixTime, format } from 'date-fns';
+import { format, fromUnixTime } from 'date-fns';
 
 const PAPER_PROPS: PaperProps = {
     p: 'md',
@@ -12,7 +12,6 @@ const PAPER_PROPS: PaperProps = {
 export const HomePage = () => {
     const [currentWeather, setCurrentWeather] = useState<Weather>();
     const [forecast, setForecast] = useState<Forecast>();
-
     const fetchCurrentWeather = useCallback(async () => {
         try {
             const response: Weather = await WeatherApi.currentByCity();

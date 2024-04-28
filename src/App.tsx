@@ -6,6 +6,9 @@ import routes from './routes';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 
+// lang
+import { I18nProvider } from './i18n/i18n.tsx';
+
 const myColor: MantineColorsTuple = [
     '#e5f4ff',
     '#cde2ff',
@@ -32,10 +35,12 @@ const theme = createTheme({
 function App() {
     return (
         <>
-            <MantineProvider theme={theme}>
-                <Notifications />
-                <RouterProvider router={routes} />
-            </MantineProvider>
+            <I18nProvider>
+                <MantineProvider theme={theme}>
+                    <Notifications />
+                    <RouterProvider router={routes} />
+                </MantineProvider>
+            </I18nProvider>
         </>
     );
 }

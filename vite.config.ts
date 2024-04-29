@@ -9,5 +9,5 @@ export default defineConfig({
         setupFiles: './vitest.setup.ts',
         reporters: ['html'],
     },
-    base: '/',
+    base: '/multilingual-weather-dashboard/',
 });

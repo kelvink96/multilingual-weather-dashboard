@@ -21,6 +21,7 @@ import { useIntl } from 'react-intl';
 const PAPER_PROPS: PaperProps = {
     p: 'md',
     withBorder: true,
+    shadow: 'sm',
 };
 
 export const HomePage = () => {
@@ -100,7 +101,7 @@ export const HomePage = () => {
                                 <WeatherCard
                                     title={intl.formatMessage({ id: 'weather.pressure_label' })}
                                     icon={IconDashboard}
-                                    unit={`${currentWeather?.main.temp}hPa`}
+                                    unit={`${currentWeather?.main.temp} hPa`}
                                     {...PAPER_PROPS}
                                 />
                                 <WeatherCard
@@ -112,7 +113,7 @@ export const HomePage = () => {
                                 <WeatherCard
                                     title={intl.formatMessage({ id: 'weather.visibility_label' })}
                                     icon={IconMist}
-                                    unit={`${currentWeather?.visibility}km`}
+                                    unit={`${currentWeather?.visibility} km`}
                                     {...PAPER_PROPS}
                                 />
                                 <WeatherCard
@@ -127,12 +128,14 @@ export const HomePage = () => {
                                     unit={`${currentWeather?.clouds.all}%`}
                                     {...PAPER_PROPS}
                                 />
-                                <WeatherCard
-                                    title={intl.formatMessage({ id: 'weather.rain_label' })}
-                                    icon={IconDroplets}
-                                    unit={`${currentWeather.rain['1h']}mm`}
-                                    {...PAPER_PROPS}
-                                />
+                                {currentWeather.rain && (
+                                    <WeatherCard
+                                        title={intl.formatMessage({ id: 'weather.rain_label' })}
+                                        icon={IconDroplets}
+                                        unit={`${currentWeather.rain?.['1h']}mm`}
+                                        {...PAPER_PROPS}
+                                    />
+                                )}
                             </SimpleGrid>
                         </Stack>
                     )}

@@ -8,25 +8,25 @@ import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 
 const myColor: MantineColorsTuple = [
-    '#e5f4ff',
-    '#cde2ff',
-    '#9bc2ff',
-    '#64a0ff',
-    '#3984fe',
-    '#1d72fe',
-    '#0969ff',
-    '#0058e4',
-    '#004ecc',
-    '#0043b5',
+    '#fff0e4',
+    '#ffe0cf',
+    '#fac0a1',
+    '#f69e6e',
+    '#f28043',
+    '#f06d27',
+    '#f06418',
+    '#d6530c',
+    '#bf4906',
+    '#a73c00',
 ];
 
 const theme = createTheme({
-    colors: { 'deep-blue': myColor },
+    colors: { tomamto: myColor },
     fontFamily: 'Inter, sans-serif',
     fontFamilyMonospace: 'Monaco, Courier, monospace',
     headings: { fontFamily: 'Inter, sans-serif' },
-    primaryColor: 'deep-blue',
-    primaryShade: 8,
+    primaryColor: 'tomamto',
+    primaryShade: 7,
     defaultRadius: 'md',
 });
 

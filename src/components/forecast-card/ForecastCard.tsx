@@ -23,12 +23,10 @@ export const ForecastCard = (props: Props) => {
             </Text>
             <IconTemperatureCelsius />
             <Text>
-                <FormattedMessage id="weather.pressure_label" />
-                hPa: {pressure}
+                <FormattedMessage id="weather.pressure_label" />: {pressure} hPa
             </Text>
             <Text>
-                <FormattedMessage id="weather.humidity_label" />
-                %: {humidity}
+                <FormattedMessage id="weather.humidity_label" />: {humidity}%
             </Text>
             <Image src={icon} h={60} w={60} fit="contain" />
         </Paper>

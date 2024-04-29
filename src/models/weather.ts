@@ -5,7 +5,7 @@ export interface Weather {
     main: Main;
     visibility: number;
     wind: Wind;
-    rain: Rain;
+    rain?: Rain;
     clouds: Clouds;
     dt: number;
     sys: Sys;

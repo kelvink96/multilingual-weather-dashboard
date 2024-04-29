@@ -1,10 +1,11 @@
 import { useDisclosure } from '@mantine/hooks';
-import { AppShell, Skeleton } from '@mantine/core';
+import { AppShell, Skeleton, useMantineColorScheme } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header.tsx';
 
 export const AppLayout = () => {
     const [opened, { toggle }] = useDisclosure();
+    const { colorScheme } = useMantineColorScheme();
 
     return (
         <AppShell
@@ -23,7 +24,7 @@ export const AppLayout = () => {
                         <Skeleton key={index} h={28} mt="sm" animate={false} />
                     ))}
             </AppShell.Navbar>
-            <AppShell.Main>
+            <AppShell.Main bg={colorScheme === 'light' ? 'gray.2' : 'dark.9'}>
                 <Outlet />
             </AppShell.Main>
         </AppShell>

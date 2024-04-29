@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import { Group, Menu, UnstyledButton } from '@mantine/core';
+import { Button, Menu } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './LanguagePicker.module.css';
 import { LocaleContext, LocaleContextType } from '../../context';
-import { locales } from '../../i18n/i18n-config.ts';
+import { locales } from '../../i18n';
 
 export const LanguagePicker = () => {
     const { locale, setLocale } = useContext(LocaleContext) as LocaleContextType;
@@ -23,12 +23,14 @@ export const LanguagePicker = () => {
     return (
         <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" width="target" withinPortal>
             <Menu.Target>
-                <UnstyledButton className={classes.control} data-expanded={opened || undefined}>
-                    <Group gap="xs">
-                        <span className={classes.label}>{locales[locale].name}</span>
-                    </Group>
-                    <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
-                </UnstyledButton>
+                <Button
+                    rightSection={<IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />}
+                    // className={classes.control}
+                    data-expanded={opened || undefined}
+                    variant="light"
+                >
+                    <span className={classes.label}>{locales[locale].name}</span>
+                </Button>
             </Menu.Target>
             <Menu.Dropdown>{items}</Menu.Dropdown>
         </Menu>

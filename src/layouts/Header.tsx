@@ -1,6 +1,6 @@
-import { ActionIcon, Burger, Group, SegmentedControl, Text, TextInput } from '@mantine/core';
-import { LanguagePicker, Logo } from '../components';
-import { IconSearch, IconSun } from '@tabler/icons-react';
+import { Burger, Group, Text, TextInput } from '@mantine/core';
+import { LanguagePicker, Logo, ThemeToggle } from '../components';
+import { IconSearch } from '@tabler/icons-react';
 
 type Props = {
     opened: boolean;
@@ -12,19 +12,21 @@ export const Header = (props: Props) => {
 
     return (
         <>
-            <Group h="100%" px="md">
+            <Group h="100%" px="md" justify="space-between">
                 <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
                 <Group>
                     <Logo size={30} />
                     <Text>{new Date().toLocaleDateString()}</Text>
                 </Group>
                 <Group>
-                    <TextInput leftSection={<IconSearch />} />
+                    <TextInput
+                        leftSection={<IconSearch size={16} />}
+                        placeholder="search location"
+                        value="Nairobi, KE"
+                        variant="filled"
+                    />
                     <LanguagePicker />
-                    <ActionIcon variant="default" aria-label="toggle theme">
-                        <IconSun stroke={1.5} />
-                    </ActionIcon>
-                    <SegmentedControl data={['Celcius', 'Farenheit']} />
+                    <ThemeToggle />
                 </Group>
             </Group>
         </>

@@ -9,7 +9,7 @@ if (!API_KEY) {
     console.log('Api key missing', API_KEY);
 }
 
-axios.defaults.baseURL = 'http://api.openweathermap.org/data/2.5';
+axios.defaults.baseURL = 'https://api.openweathermap.org/data/2.5';
 
 const responseBody = (response: AxiosResponse) => response.data;
 

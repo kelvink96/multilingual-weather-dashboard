@@ -51,7 +51,7 @@ export const HomePage = () => {
             setWeatherError({
                 title: 'Weather data',
                 message: 'Error fetching weather data',
-                code: error.status ?? 400,
+                code: error['status'] ?? 400,
             });
         }
     }, []);

@@ -73,10 +73,18 @@ export const HomePage = () => {
     }, []);
 
     useEffect(() => {
-        setLoading(true);
-        fetchCurrentWeather();
-        fetchForecast();
-        setLoading(false);
+        const fetchData = async () => {
+            setLoading(true);
+            await fetchCurrentWeather();
+            await fetchForecast();
+            setLoading(false);
+        };
+
+        fetchData();
+
+        return () => {
+            fetchData();
+        };
     }, [fetchCurrentWeather, fetchForecast]);
 
     return (

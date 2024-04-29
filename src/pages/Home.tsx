@@ -88,7 +88,7 @@ export const HomePage = () => {
     return (
         <>
             <Box mt="md">
-                <Grid gutter={{ base: 5, xs: 'md', md: 'lg', xl: 'xl' }}>
+                <Grid gutter={{ base: 'xl', xs: 'md', md: 'lg', xl: 'xl' }}>
                     <Grid.Col span={{ base: 12, md: 12, lg: 8 }}>
                         <Stack>
                             <Title order={4}>
@@ -216,7 +216,7 @@ export const HomePage = () => {
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, md: 12, lg: 4 }}>
                         <Stack>
-                            <Flex justify="space-between">
+                            <Flex align="center" justify="space-between">
                                 <Title order={4}>5-day forecast</Title>
                                 {loading ? (
                                     <Skeleton h={36} w={200} />

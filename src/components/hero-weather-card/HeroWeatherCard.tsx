@@ -1,4 +1,4 @@
-import { Flex, Image, Paper, PaperProps, Stack, Text } from '@mantine/core';
+import { Flex, Image, Paper, PaperProps, Text } from '@mantine/core';
 import { FormattedMessage } from 'react-intl';
 import { IconTemperatureCelsius } from '@tabler/icons-react';
 
@@ -18,17 +18,17 @@ export const HeroWeatherCard = (props: Props) => {
 
     return (
         <Paper {...others}>
-            <Stack gap="md">
+            <Flex direction={{ base: 'row', md: 'column' }} gap="md">
                 <Text>
                     <FormattedMessage id="location.city_label" />: {city}
                 </Text>
                 <Text>
                     <FormattedMessage id="location.country_label" />: {country}
                 </Text>
-            </Stack>
-            <Flex gap="md" align="center">
+            </Flex>
+            <Flex direction={{ base: 'column', md: 'row' }} gap="md" align={{ base: 'flex-start', md: 'center' }}>
                 <Image src={icon} h={128} w={128} fit="contain" />
-                <Stack>
+                <Flex direction="row" wrap="wrap">
                     <Flex gap={4} align="center">
                         <Text>
                             <FormattedMessage id="weather.feels_like_label" />{' '}
@@ -50,7 +50,7 @@ export const HeroWeatherCard = (props: Props) => {
                         :<Text fw={500}>{minTemp}</Text>
                         <IconTemperatureCelsius size={16} stroke={1} />
                     </Flex>
-                </Stack>
+                </Flex>
             </Flex>
         </Paper>
     );

@@ -1,7 +1,3 @@
-Certainly! Here's a sample README document for your multi-lingual weather dashboard:
-
----
-
 # Multi-Lingual Weather Dashboard
 
 This project is a multi-lingual weather dashboard built using React (with Vite), Mantine UI library, OpenWeatherMap API, and Axios for data fetching. It provides users with real-time weather updates for different locations around the world, supporting multiple languages for enhanced accessibility.
@@ -70,7 +66,7 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/kelvink96/multilingual-weather-dashboard/blob/master/LICENSE) file for details.
 
 ## File structure
 

@@ -18,7 +18,13 @@ export const ForecastCard = (props: Props) => {
 
     return (
         <Paper {...others}>
-            <Flex justify="space-between" align="center">
+            <Flex
+                px="sm"
+                justify={{ base: 'center', md: 'space-between' }}
+                gap={{ base: 'sm', md: 0 }}
+                align="center"
+                wrap="wrap"
+            >
                 <Flex align="center">
                     <Image src={icon} h={90} w={90} fit="contain" />
                     <Stack gap={4}>
@@ -32,19 +38,19 @@ export const ForecastCard = (props: Props) => {
                     </Text>
                     <IconTemperatureCelsius size={18} stroke={1} />
                 </Flex>
-                <Stack gap={4} mr="md">
+                <Flex direction={{ base: 'row', md: 'column' }} gap={{ base: 'sm', md: 4 }} wrap="wrap">
                     <Text fz="sm">
-                        <FormattedMessage id="weather.pressure_label" />: {pressure} hPa
+                        <FormattedMessage id="weather.pressure_label" />: <b>{pressure} hPa</b>
                     </Text>
                     <Text fz="sm">
-                        <FormattedMessage id="weather.humidity_label" />: {humidity}%
+                        <FormattedMessage id="weather.humidity_label" />: <b>{humidity}%</b>
                     </Text>
                     <Text fz="sm">
-                        <FormattedMessage id="weather.wind_label" />: {wind} m/s
+                        <FormattedMessage id="weather.wind_label" />: <b>{wind} m/s</b>
                     </Text>
-                </Stack>
+                </Flex>
             </Flex>
-            <Divider />
+            <Divider mt="sm" />
         </Paper>
     );
 };

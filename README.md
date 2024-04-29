@@ -111,6 +111,6 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 ┣ 📃 README.md                  # Main README
 ┣ 📃 renovate.json              # Renovate Bot config **
 ┣ 📃 tsconfig.json              # TypeScript config
-┣ 📃 vite.config.mjs            # Vite config
-┣ 📃 vitest.setup.mjs           # Viteest config
+┣ 📃 vite.config.ts            # Vite config
+┣ 📃 vitest.setup.ts           # Viteest config
 ```

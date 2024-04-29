@@ -1,5 +1,7 @@
 # Multi-Lingual Weather Dashboard
 
+[Online Demo](https://multilingual-weather-dashboard-coral.vercel.app/)
+
 ![image](https://github.com/kelvink96/multilingual-weather-dashboard/assets/26582923/848ad586-e601-4c53-9bfa-8fc9b1c2b423)
 
 This project is a multi-lingual weather dashboard built using React (with Vite), Mantine UI library, OpenWeatherMap API, and Axios for data fetching. It provides users with real-time weather updates for different locations around the world, supporting multiple languages for enhanced accessibility.

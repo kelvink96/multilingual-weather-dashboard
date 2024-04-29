@@ -1,4 +1,4 @@
-import { Burger, Group, Text, TextInput } from '@mantine/core';
+import { Burger, Group, TextInput } from '@mantine/core';
 import { LanguagePicker, Logo, ThemeToggle } from '../components';
 import { IconSearch } from '@tabler/icons-react';
 
@@ -13,21 +13,21 @@ export const Header = (props: Props) => {
     return (
         <>
             <Group h="100%" px="md" justify="space-between">
-                <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
                 <Group>
                     <Logo size={30} />
-                    <Text>{new Date().toLocaleDateString()}</Text>
                 </Group>
-                <Group>
-                    <TextInput
-                        leftSection={<IconSearch size={16} />}
-                        placeholder="search location"
-                        value="Nairobi, KE"
-                        variant="filled"
-                    />
+                <TextInput
+                    leftSection={<IconSearch size={16} />}
+                    placeholder="search location"
+                    value="Nairobi, KE"
+                    w={400}
+                    visibleFrom="sm"
+                />
+                <Group visibleFrom="sm">
                     <LanguagePicker />
                     <ThemeToggle />
                 </Group>
+                <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             </Group>
         </>
     );

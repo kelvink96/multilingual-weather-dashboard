@@ -1,7 +1,10 @@
 import { useDisclosure } from '@mantine/hooks';
-import { AppShell, Skeleton, useMantineColorScheme } from '@mantine/core';
+import { AppShell, Group, Stack, TextInput, useMantineColorScheme } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header.tsx';
+import classes from './App.module.css';
+import { IconSearch } from '@tabler/icons-react';
+import { LanguagePicker, ThemeToggle } from '../components';
 
 export const AppLayout = () => {
     const [opened, { toggle }] = useDisclosure();
@@ -13,18 +16,23 @@ export const AppLayout = () => {
             navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
             padding="md"
         >
-            <AppShell.Header>
+            <AppShell.Header className={classes.header}>
                 <Header toggle={toggle} opened={opened} />
             </AppShell.Header>
             <AppShell.Navbar py="md" px={4}>
-                Navbar
-                {Array(15)
-                    .fill(0)
-                    .map((_, index) => (
-                        <Skeleton key={index} h={28} mt="sm" animate={false} />
-                    ))}
+                <Stack px="md">
+                    <TextInput
+                        leftSection={<IconSearch size={16} />}
+                        placeholder="search location"
+                        value="Nairobi, KE"
+                    />
+                    <Group grow>
+                        <LanguagePicker variant="filled" />
+                        <ThemeToggle expanded variant="filled" />
+                    </Group>
+                </Stack>
             </AppShell.Navbar>
-            <AppShell.Main bg={colorScheme === 'light' ? 'gray.2' : 'dark.9'}>
+            <AppShell.Main bg={colorScheme === 'light' ? 'gray.1' : 'dark.9'}>
                 <Outlet />
             </AppShell.Main>
         </AppShell>

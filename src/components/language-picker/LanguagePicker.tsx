@@ -1,11 +1,14 @@
 import { useContext, useState } from 'react';
-import { Button, Menu } from '@mantine/core';
+import { Button, ButtonProps, Menu, MenuProps } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './LanguagePicker.module.css';
 import { LocaleContext, LocaleContextType } from '../../context';
 import { locales } from '../../i18n';
 
-export const LanguagePicker = () => {
+type Props = MenuProps & { variant?: ButtonProps['variant'] };
+
+export const LanguagePicker = (props: Props) => {
+    const { variant, ...others } = props;
     const { locale, setLocale } = useContext(LocaleContext) as LocaleContextType;
     const [opened, setOpened] = useState(false);
 
@@ -21,13 +24,20 @@ export const LanguagePicker = () => {
     ));
 
     return (
-        <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" width="target" withinPortal>
+        <Menu
+            onOpen={() => setOpened(true)}
+            onClose={() => setOpened(false)}
+            radius="md"
+            width="target"
+            withinPortal
+            {...others}
+        >
             <Menu.Target>
                 <Button
                     rightSection={<IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />}
                     // className={classes.control}
                     data-expanded={opened || undefined}
-                    variant="light"
+                    variant={variant ?? 'light'}
                 >
                     <span className={classes.label}>{locales[locale].name}</span>
                 </Button>

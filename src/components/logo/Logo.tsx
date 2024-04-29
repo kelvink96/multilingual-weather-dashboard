@@ -1,4 +1,4 @@
-import { Group, Text, UnstyledButton, UnstyledButtonProps } from '@mantine/core';
+import { Group, Text, ThemeIcon, UnstyledButton, UnstyledButtonProps } from '@mantine/core';
 import { IconSnowflake } from '@tabler/icons-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -7,7 +7,9 @@ type Props = Partial<UnstyledButtonProps>;
 export const Logo = ({ ...others }: Props) => {
     return (
         <UnstyledButton component={Group} {...others}>
-            <IconSnowflake size={24} />
+            <ThemeIcon variant="filled" size="lg">
+                <IconSnowflake />
+            </ThemeIcon>
             <Text>
                 <FormattedMessage id="app.title" />
             </Text>

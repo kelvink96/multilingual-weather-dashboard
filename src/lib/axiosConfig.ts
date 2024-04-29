@@ -5,6 +5,10 @@ const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 
 const API_KEY = import.meta.env.VITE_API_KEY!;
 
+if (!API_KEY) {
+    console.log('Api key missing', API_KEY);
+}
+
 axios.defaults.baseURL = 'http://api.openweathermap.org/data/2.5';
 
 const responseBody = (response: AxiosResponse) => response.data;

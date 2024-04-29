@@ -1,6 +1,6 @@
 # Multi-lingual Weather Dashboard
 
-[Online Demo](https://multilingual-weather-dashboard-coral.vercel.app/)
+[Online Demo](https://multilingual-weather-dashboard-2ka57y4ab.vercel.app/)
 
 ![image](https://github.com/kelvink96/multilingual-weather-dashboard/assets/26582923/848ad586-e601-4c53-9bfa-8fc9b1c2b423)
 

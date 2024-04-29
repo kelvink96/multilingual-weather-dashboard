@@ -10,7 +10,7 @@ export const Logo = ({ ...others }: Props) => {
             <ThemeIcon variant="filled" size="lg">
                 <IconSnowflake />
             </ThemeIcon>
-            <Text>
+            <Text fz="lg" fw={600}>
                 <FormattedMessage id="app.title" />
             </Text>
         </UnstyledButton>

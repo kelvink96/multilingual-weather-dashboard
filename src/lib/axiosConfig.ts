@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import router from '../routes';
 import { notifications } from '@mantine/notifications';
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
@@ -18,7 +17,7 @@ axios.interceptors.response.use(
         return response;
     },
     (error: IError) => {
-        const { data, status } = error.response;
+        const { data, status, statusText } = error.response;
 
         switch (status) {
             case 400:
@@ -34,26 +33,30 @@ axios.interceptors.response.use(
                     throw modelStateErrors.flat();
                 }
                 notifications.show({
-                    title: data['title'],
-                    message: data['title'],
+                    color: 'red',
+                    title: status,
+                    message: statusText,
                 });
                 break;
             case 401:
                 notifications.show({
-                    title: data['title'],
-                    message: data['title'],
+                    color: 'red',
+                    title: status,
+                    message: statusText,
                 });
                 break;
             case 404:
-                router.navigate('/error/404', { state: { error: data } });
+                // router.navigate('/error/404', { state: { error: data } });
                 notifications.show({
-                    title: data['title'],
-                    message: data['title'],
+                    color: 'red',
+                    title: status,
+                    message: statusText,
                 });
                 break;
             case 500:
-                router.navigate('/error/500', { state: { error: data } });
+                // router.navigate('/error/500', { state: { error: data } });
                 notifications.show({
+                    color: 'red',
                     title: error.response['data']['title'],
                     message: error.response['data']['title'],
                 });

@@ -19,7 +19,7 @@ export const Header = (props: Props) => {
                 <TextInput
                     leftSection={<IconSearch size={16} />}
                     placeholder="search location"
-                    value="Nairobi, KE"
+                    defaultValue="Nairobi, KE"
                     w={400}
                     visibleFrom="sm"
                 />

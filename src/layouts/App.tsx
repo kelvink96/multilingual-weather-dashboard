@@ -24,7 +24,7 @@ export const AppLayout = () => {
                     <TextInput
                         leftSection={<IconSearch size={16} />}
                         placeholder="search location"
-                        value="Nairobi, KE"
+                        defaultValue="Nairobi, KE"
                     />
                     <Group grow>
                         <LanguagePicker variant="filled" />

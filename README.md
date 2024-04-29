@@ -1,4 +1,4 @@
-# Multi-Lingual Weather Dashboard
+# Multi-lingual Weather Dashboard
 
 [Online Demo](https://multilingual-weather-dashboard-coral.vercel.app/)
 

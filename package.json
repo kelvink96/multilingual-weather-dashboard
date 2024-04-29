@@ -1,6 +1,9 @@
 {
     "name": "multilingual-weather-dashboard",
-    "private": true,
+    "description": "A multi-lingual weather dashboard built using React(Vite), Mantine, OpenWeatherApi and Axios",
+    "private": false,
+    "author": "kelvin kiprop<kelvin.kiprop96@gmail.com>",
+    "repository": "https://github.com/kelvink96/multilingual-weather-dashboard",
     "version": "0.0.0",
     "type": "module",
     "scripts": {
@@ -9,11 +12,7 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "prepare": "husky",
-        "test": "vitest --ui",
-        "vitest": "vitest run",
-        "vitest:ui": "vitest --ui",
-        "vitest:coverage": "vitest --coverage",
-        "vitest:watch": "vitest"
+        "test": "vitest --ui"
     },
     "dependencies": {
         "@mantine/carousel": "^7.8.1",

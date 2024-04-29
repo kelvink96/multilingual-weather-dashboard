@@ -104,3 +104,5 @@ dist-ssr
 
 # Vitest output dir
 html
+# Local Netlify folder
+.netlify

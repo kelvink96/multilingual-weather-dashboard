@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { notifications } from '@mantine/notifications';
 
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 50));
 
 const API_KEY = import.meta.env.VITE_API_KEY!;
 

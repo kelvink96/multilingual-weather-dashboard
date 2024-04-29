@@ -10,6 +10,7 @@ export default defineConfig(
             setupFiles: './vitest.setup.mjs',
             reporters: ['html'],
         },
+        base: 'multilingual-weather-dashboard',
     },
     ({ command, mode }) => {
         // Load env file based on `mode` in the current working directory.
